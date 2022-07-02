@@ -1,54 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="head">
+<head th:replace="master/master :: head">
 	<meta charset="UTF-8">
-	<title>Mil Oficios</title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-	<style>
-		.navbar-toggler {
-			border-color: white;
-			border-width: 5px;
-		}
-
-		body,
-		html {
-			height: 100%;
-			margin: 0;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width : 768px) {
-			.bd-placeholder-img-lg {
-				font-size: 3.5rem;
-			}
-		}
-	</style>
-
-	<!-- Custom styles for this template -->
-	<link href="/css/sidebars.css" rel="stylesheet">
-
-
+	<title>Lista de Empleados</title>
 </head>
 
 <body>
@@ -112,7 +67,6 @@
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li><a class="link-dark rounded" th:href="@{/convocatoria/nuevo}">Registrar</a>></li>
 								<li><a class="link-dark rounded" th:href="@{/convocatoria/listar}">Listar</a></li>
-								<li><a class="link-dark rounded" th:href="@{/convocatoria/reporteConvExtensa}">Reporte Willy</a></li>
 							</ul>
 						</div>
 					</li>
@@ -183,6 +137,58 @@
 			<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 1215px;">
 
 				<!-- Poner Aqui el formulario -->
+				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario de
+					Listar</h2>
+
+				<div class="container">
+					<div>
+						<div class="table-responsive">
+
+							<table class="table table-white">
+
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Nombre de Empleado</th>
+										<th>DNI</th>
+										<th>Telefono</th>
+										<th>Fecha de Nacimiento</th>
+										<th>Dirección</th>
+										<th>Email</th>
+										<th>Distrito</th>
+
+										<th>Operación</th>
+										<th>Operación</th>
+
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr th:each="e:${listaEmpleados}">
+										<td th:text="${e.id}"></td>
+										<td th:text="${e.fullname}"></td>
+										<td th:text="${e.dni}"></td>
+										<td th:text="${e.phone}"></td>
+										<td th:text="${e.birth}"></td>
+										<td th:text="${e.address}"></td>
+										<td th:text="${e.email}"></td>
+										<td th:text="${e.distrito.name}"></td>
+
+
+										<td><a th:href="@{/empleado/eliminar?id=}+${e.id}">Eliminar</a></td>
+										<td><a th:href="@{'/empleado/irmodificar/'+${e.id}}">Modificar</a></td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+
+						</div>
+
+					</div>
+
+				</div>
 
 
 
@@ -202,20 +208,7 @@
 
 
 
-
-
-
-
-
-
-
-
-	<footer th:fragment="footer" class="container">
-
-		<p>MilOficios 2022</p>
-
-
-	</footer>
+	<footer th:replace="master/master :: footer"></footer>
 
 
 

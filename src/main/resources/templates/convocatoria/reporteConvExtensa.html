@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Convocatorias</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"> </header>
+
+	<h2 style="padding-top: 40px; padding-left: 50px;">Convocatorias más extensas en días</h2>
+
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+
+				<table class="table table-white">
+
+					<thead>
+						<tr>
+							<th>Nombre Convocatoria</th>
+							<th>Fecha de Inicio</th>
+							<th>Fecha de Finalizacion</th>
+							<th>Cantidad de dias</th>
+
+
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="c:${lista}">
+							<td th:text="${c[0]}"></td>
+							<td th:text="${c[1]}"></td>
+							<td th:text="${c[2]}"></td>
+							<td th:text="${c[3]}"></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer th:replace="master/master :: footer"></footer>
+
+
+
+</body>
+</html>

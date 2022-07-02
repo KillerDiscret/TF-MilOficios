@@ -47,5 +47,11 @@ public class ConvocatoriaServiceImpl implements IConvocatoriaService {
 		
 		convocatoriaRepository.save(con);
 	}
+	
+	@Override
+	public List<String[]> reporteConvExtensa() {
+		// TODO Auto-generated method stub
+		return convocatoriaRepository.reporteConvExtensa();
+	}
 
 }
