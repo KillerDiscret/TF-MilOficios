@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Modificar Postulacion</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"> </header>
+
+	<h2 style="padding-top: 40px; padding-left: 50px;">Formulario de
+		Modificar</h2>
+
+	<div class="container">
+		<div>
+			<form th:action="@{/postulacion/modificar}" method="post"
+				th:object="${psa}">
+
+				<div class="row justify-content-center">
+					<div class="col-4">
+						<h3 th:text="'Editando Postulacion: ' + ${psa.state}"></h3>
+					</div>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-4" style="margin-top: 10px; pointer-events: none;">
+						<label class="form-label">Id: </label> <input type="text"
+							class="form-control" th:field="*{id}"></input>
+					</div>
+				</div>
+
+
+				<div class="row justify-content-center">
+					<div class="col-4" style="margin-top: 10px;">
+						<label class="form-label">Estado de Postulacion: </label> <input
+							type="text" class="form-control" th:field="*{state}" minlength="3"
+							maxlength="20" required="required"></input>
+					</div>
+				</div>
+
+
+				<div class="row justify-content-center">
+					<div class="col-4" style="margin-top: 10px;">
+						<label for="sede">Empleado:</label> <select class="form-select"
+							aria-label="Default select example" th:field="*{empleado.id}">
+							<option th:each="lp: ${listaEmpleados}" th:value="${lp.id}"
+								th:text="${lp.fullname}" th:selected="(${lp.id} == *{empleado.id})"></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="row justify-content-center">
+					<div class="col-4" style="margin-top: 10px;">
+						<label for="sede">Convocatoria:</label> <select class="form-select"
+							aria-label="Default select example" th:field="*{convocatoria.id}">
+							<option th:each="lc: ${listaConvocatorias}" th:value="${lc.id}"
+								th:text="${lc.name}" th:selected="(${lc.id} == *{convocatoria.id})"></option>
+						</select>
+					</div>
+				</div>
+
+
+				<div class="row justify-content-center">
+					<div class="col-4" style="margin-top: 10px;">
+						<input type="submit" class="btn btn-dark" value="Actualizar"></input>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+
+
+	</div>
+
+
+	<footer th:replace="master/master :: footer"></footer>
+
+
+</body>
+</html>

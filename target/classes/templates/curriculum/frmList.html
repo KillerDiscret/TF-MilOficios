@@ -3,7 +3,7 @@
 
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
-<title>Registrar Provincia</title>
+<title>Lista de Curriculum</title>
 </head>
 <body>
 
@@ -235,48 +235,45 @@
 				style="width: 1215px;">
 
 				<!-- Poner Aqui el formulario -->
-
 				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario
-					de Registrar</h2>
+					de Listar</h2>
 
 				<div class="container">
 					<div>
-						<form th:action="@{/provincia/guardar}" method="post"
-							th:object="${p}">
+						<div class="table-responsive">
 
+							<table class="table table-white">
 
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Descripcion</th>
+										<th>Empleado</th>
 
-							<div class="row justify-content-center">
-								<div class="col-4">
-									<label class="form-label">Nombre de Provincia: </label> <input
-										type="text" class="form-control" th:field="*{name}"
-										minlength="3" maxlength="20" required="required"></input>
-								</div>
-							</div>
+										<th>Operación</th>
+										<th>Operación</th>
 
+									</tr>
+								</thead>
 
-							<div class="row justify-content-center">
-								<div class="col-4" style="margin-top: 10px;">
-									<label for="sede">Departamento:</label> <select
-										class="form-select" aria-label="Default select example"
-										th:field="*{departamento.id}">
-										<option th:each="ld: ${listaDepartamentos}"
-											th:value="${ld.id}" th:text="${ld.name}"
-											th:selected="(${ld.id} == *{departamento.id})"></option>
-									</select>
-								</div>
-							</div>
+								<tbody>
+									<tr th:each="c:${listaCurriculums}">
+										<td th:text="${c.id}"></td>
+										<td th:text="${c.description}"></td>
+										<td th:text="${c.empleado.fullname}"></td>
 
-							<div class="row justify-content-center">
-								<div class="col-4" style="margin-top: 10px;">
-									<input type="submit" class="btn btn-dark" value="Registrar"></input>
-								</div>
-							</div>
+										<td><a th:href="@{/curriculum/eliminar?id=}+${c.id}">Eliminar</a></td>
+										<td><a th:href="@{'/curriculum/irmodificar/'+${c.id}}">Modificar</a></td>
 
-						</form>
+									</tr>
+
+								</tbody>
+
+							</table>
+
+						</div>
 
 					</div>
-
 
 				</div>
 
@@ -294,6 +291,7 @@
 
 
 	</header>
+
 
 
 

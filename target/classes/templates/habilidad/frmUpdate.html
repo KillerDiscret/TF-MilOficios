@@ -3,7 +3,7 @@
 
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
-<title>Registrar Provincia</title>
+<title>Modificar Distrito</title>
 </head>
 <body>
 
@@ -235,20 +235,32 @@
 				style="width: 1215px;">
 
 				<!-- Poner Aqui el formulario -->
-
 				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario
-					de Registrar</h2>
+					de Modificar</h2>
 
 				<div class="container">
 					<div>
-						<form th:action="@{/provincia/guardar}" method="post"
-							th:object="${p}">
+						<form th:action="@{/habilidad/modificar}" method="post"
+							th:object="${hsa}">
 
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<h3 th:text="'Editando Habilidad: ' + ${hsa.name}"></h3>
+								</div>
+							</div>
+
+							<div class="row justify-content-center">
+								<div class="col-4"
+									style="margin-top: 10px; pointer-events: none;">
+									<label class="form-label">Id: </label> <input type="text"
+										class="form-control" th:field="*{id}"></input>
+								</div>
+							</div>
 
 
 							<div class="row justify-content-center">
 								<div class="col-4">
-									<label class="form-label">Nombre de Provincia: </label> <input
+									<label class="form-label">Nombre de Habilidad: </label> <input
 										type="text" class="form-control" th:field="*{name}"
 										minlength="3" maxlength="20" required="required"></input>
 								</div>
@@ -257,19 +269,20 @@
 
 							<div class="row justify-content-center">
 								<div class="col-4" style="margin-top: 10px;">
-									<label for="sede">Departamento:</label> <select
+									<label for="sede">Curriculum:</label> <select
 										class="form-select" aria-label="Default select example"
-										th:field="*{departamento.id}">
-										<option th:each="ld: ${listaDepartamentos}"
-											th:value="${ld.id}" th:text="${ld.name}"
-											th:selected="(${ld.id} == *{departamento.id})"></option>
+										th:field="*{curriculum.id}">
+										<option th:each="lp: ${listaCurriculums}" th:value="${lp.id}"
+											th:text="${lp.description}"
+											th:selected="(${lp.id} == *{curriculum.id})"></option>
 									</select>
 								</div>
 							</div>
 
+
 							<div class="row justify-content-center">
 								<div class="col-4" style="margin-top: 10px;">
-									<input type="submit" class="btn btn-dark" value="Registrar"></input>
+									<input type="submit" class="btn btn-dark" value="Actualizar"></input>
 								</div>
 							</div>
 
@@ -294,6 +307,7 @@
 
 
 	</header>
+
 
 
 
