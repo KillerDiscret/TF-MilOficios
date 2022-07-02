@@ -16,5 +16,7 @@ public interface IConvocatoriaService {
 	Optional<Convocatoria> listId(int idCon);
 
 	public void update(Convocatoria con);
+	
+	List<String[]> reporteConvExtensa();
 
 }

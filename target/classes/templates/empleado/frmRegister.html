@@ -1,54 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="head">
+<head th:replace="master/master :: head">
 	<meta charset="UTF-8">
-	<title>Mil Oficios</title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-	<style>
-		.navbar-toggler {
-			border-color: white;
-			border-width: 5px;
-		}
-
-		body,
-		html {
-			height: 100%;
-			margin: 0;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width : 768px) {
-			.bd-placeholder-img-lg {
-				font-size: 3.5rem;
-			}
-		}
-	</style>
-
-	<!-- Custom styles for this template -->
-	<link href="/css/sidebars.css" rel="stylesheet">
-
-
+	<title>Registrar Empleado</title>
 </head>
 
 <body>
@@ -112,7 +67,6 @@
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li><a class="link-dark rounded" th:href="@{/convocatoria/nuevo}">Registrar</a>></li>
 								<li><a class="link-dark rounded" th:href="@{/convocatoria/listar}">Listar</a></li>
-								<li><a class="link-dark rounded" th:href="@{/convocatoria/reporteConvExtensa}">Reporte Willy</a></li>
 							</ul>
 						</div>
 					</li>
@@ -130,18 +84,22 @@
 							</ul>
 						</div>
 					</li>
-
+					
 					<li class="mb-1">
-						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-							data-bs-target="#home-collapse" aria-expanded="true">Empleado</button>
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#home-collapse"
+							aria-expanded="true">Empleado</button>
 						<div class="collapse show" id="home-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-								<li><a class="link-dark rounded" th:href="@{/empleado/nuevo}">Registrar</a></li>
-								<li><a class="link-dark rounded" th:href="@{/empleado/listar}">Listar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/empleado/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/empleado/listar}">Listar</a></li>
 							</ul>
 						</div>
 					</li>
-
+					
 					<li class="mb-1">
 						<button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
 							data-bs-target="#orders-collapse" aria-expanded="false">Usuario</button>
@@ -183,7 +141,88 @@
 			<div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 1215px;">
 
 				<!-- Poner Aqui el formulario -->
+				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario de
+					Registrar</h2>
 
+				<div class="container">
+					<div>
+						<form th:action="@{/empleado/guardar}" method="post" th:object="${e}">
+
+
+
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<label class="form-label">Nombre de Empleado: </label> <input type="text"
+										class="form-control" th:field="*{fullname}" minlength="3" maxlength="40"
+										required="required"></input>
+								</div>
+							</div>
+
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<label class="form-label">DNI: </label> <input type="text" class="form-control"
+										th:field="*{dni}" minlength="8" maxlength="8" required="required"></input>
+								</div>
+							</div>
+
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<label class="form-label">Telefono: </label> <input type="text" class="form-control"
+										th:field="*{phone}" minlength="7" maxlength="9" required="required"></input>
+								</div>
+							</div>
+
+
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<label class="form-label">Fecha de nacimiento: </label> <input type="date"
+										class="form-control" th:field="*{birth}"></input>
+								</div>
+							</div>
+
+
+
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<label class="form-label">Dirección: </label> <input type="text"
+										class="form-control" th:field="*{address}" minlength="10" maxlength="50"
+										required="required"></input>
+								</div>
+							</div>
+
+
+							<div class="row justify-content-center">
+								<div class="col-4">
+									<label class="form-label">Email: </label> <input type="text" class="form-control"
+										th:field="*{email}" minlength="10" maxlength="50" required="required"></input>
+								</div>
+							</div>
+
+
+
+							<div class="row justify-content-center">
+								<div class="col-4" style="margin-top: 10px;">
+									<label for="distrito">Distrito:</label> <select class="form-select"
+										aria-label="Default select example" th:field="*{distrito.id}">
+										<option th:each="ld: ${listaDistritos}" th:value="${ld.id}" th:text="${ld.name}"
+											th:selected="(${ld.id} == *{distrito.id})"></option>
+									</select>
+								</div>
+							</div>
+
+
+							<div class="row justify-content-center">
+								<div class="col-4" style="margin-top: 10px;">
+									<input type="submit" class="btn btn-dark" value="Registrar"></input>
+								</div>
+							</div>
+
+						</form>
+
+					</div>
+
+
+				</div>
 
 
 			</div>
@@ -203,20 +242,7 @@
 
 
 
-
-
-
-
-
-
-
-	<footer th:fragment="footer" class="container">
-
-		<p>MilOficios 2022</p>
-
-
-	</footer>
-
+	<footer th:replace="master/master :: footer"></footer>
 
 
 </body>
