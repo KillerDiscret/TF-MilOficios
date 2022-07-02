@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Inicio MilOficios</title>
+</head>
+
+<body>
+
+	<header th:replace="master/landing :: menu"> </header>
+
+	<div
+		style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/imagenes/inicio_banner.jpg'); height: 70%; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
+		<div
+			style="text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
+			<h1 style="font-size: 60px">Encuentra tu Trabajo Ideal</h1>
+			<p>Tu currículum será visible para miles de empresas en nuestra bolsa de trabajo</p>
+
+
+			<a class="btn btn-primary" th:href="@{/inicio/bienvenido}"
+				role="button" style="border: none; outline: 0; display: inline-block; padding: 10px 25px; color: white; background-color: #30a473; text-align: center; cursor: pointer;">Comenzar</a>
+		</div>
+	</div>
+
+
+
+
+	<header th:replace="master/landing :: pie"> </header>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Provincias</title>
+</head>
+<body>
+
+	<header th:fragment="header">
+
+
+		<main>
+
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+				<a href="/"
+					class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+					<svg class="bi me-2" width="30" height="24">
+						<use xlink:href="#bootstrap" /></svg> <span class="fs-5 fw-semibold">Collapsible</span>
+				</a>
+				<ul class="list-unstyled ps-0">
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#home-collapse"
+							aria-expanded="true">Home</button>
+						<div class="collapse show" id="home-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">Overview</a></li>
+								<li><a href="#" class="link-dark rounded">Updates</a></li>
+								<li><a href="#" class="link-dark rounded">Reports</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
+							aria-expanded="false">Dashboard</button>
+						<div class="collapse" id="dashboard-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">Overview</a></li>
+								<li><a href="#" class="link-dark rounded">Weekly</a></li>
+								<li><a href="#" class="link-dark rounded">Monthly</a></li>
+								<li><a href="#" class="link-dark rounded">Annually</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+							aria-expanded="false">Orders</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">New</a></li>
+								<li><a href="#" class="link-dark rounded">Processed</a></li>
+								<li><a href="#" class="link-dark rounded">Shipped</a></li>
+								<li><a href="#" class="link-dark rounded">Returned</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="border-top my-3"></li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#account-collapse"
+							aria-expanded="false">Account</button>
+						<div class="collapse" id="account-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a href="#" class="link-dark rounded">New...</a></li>
+								<li><a href="#" class="link-dark rounded">Profile</a></li>
+								<li><a href="#" class="link-dark rounded">Settings</a></li>
+								<li><a href="#" class="link-dark rounded">Sign out</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<div class="b-example-divider"></div>
+
+
+
+			<div
+				class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+
+				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario
+					de Listar</h2>
+
+				<div class="container">
+					<div>
+						<div class="table-responsive">
+
+							<table class="table table-white">
+
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Nombre</th>
+										<th>Departamento</th>
+
+										<th>Operación</th>
+										<th>Operación</th>
+
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr th:each="p:${listaProvincias}">
+										<td th:text="${p.id}"></td>
+										<td th:text="${p.name}"></td>
+										<td th:text="${p.departamento.name}"></td>
+
+										<td><a th:href="@{/provincia/eliminar?id=}+${p.id}">Eliminar</a></td>
+										<td><a th:href="@{'/provincia/irmodificar/'+${p.id}}">Modificar</a></td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+
+
+		</main>
+
+		<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+		<script src="/js/sidebars.js"></script>
+
+
+
+	</header>
+
+
+
+	<footer th:replace="master/master :: footer"></footer>
+
+
+
+</body>
+</html>

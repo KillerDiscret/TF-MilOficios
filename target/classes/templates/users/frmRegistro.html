@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Registrarse</title>
+
+<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- Los iconos tipo Solid de Fontawesome-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+<!-- Nuestro css-->
+<link rel="stylesheet" type="text/css" href="static/css/index.css"
+	th:href="@{/css/index.css}">
+
+
+
+</head>
+<body>
+	<div class="modal-dialog text-center">
+		<div class="col-sm-8 main-section">
+			<div class="tab-pane fade show" id="form" role="tabpanel"
+				aria-labelledby="form-tab">
+				<div class="card">
+					<div class="card-header">
+						<h4>Registrarte</h4>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-content">
+
+				<form class="col-12" th:action="@{/users/guardar2}" method="post"
+					th:object="${u}">
+					<div class="form-group" id="user-group" style="margin-top: 20px;">
+						<input type="text" class="form-control"
+							placeholder="Nombre de Usuario" name="username" maxlength="30"
+							th:field="*{username}" th:errorclass="'alert alert-danger'" />
+					
+						<div class="alert alert-danger" role="alert"
+							th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+					</div>
+					<div class="form-group" id="contrasena-group">
+						<input type="password" class="form-control"
+							placeholder="Contraseña" name="password" maxlength="20"
+							th:field="*{password}" th:errorclass="'alert alert-danger'" />
+
+						<div class="alert alert-danger" role="alert"
+							th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+					</div>
+
+					<div class="form-group">
+						<label class="form-label"
+							style="margin-right: 10px; font-size: 25px; font-weight: 500; color: white;">Role:
+						</label> <select class="form-select" th:field="*{auxrole}" id="role"
+							style="font-size: 20px;">
+							<option th:value="'ROLE_ADMIN'" th:text="ADMIN"></option>
+							<option th:value="'ROLE_EMPRESA'" th:text="EMPRESA"></option>
+							<option th:value="'ROLE_EMPLEADO'" th:text="EMPLEADO"></option>
+						</select>
+					</div>
+
+					<div class="row justify-content-center"
+						style="margin-bottom: 20px;">
+						<input type="submit" class="btn btn-primary" value="Registrar"
+							style="margin-right: 20px;"></input> <a href="/login"
+							class="btn btn-danger">Cancelar</a>
+
+					</div>
+
+				</form>
+
+
+				<div align="center" class="col-sm-12">
+					<div class="alert alert-success" th:if="${success != null}"
+						th:text="${success}"></div>
+					<div class="alert alert-danger" th:if="${error != null}"
+						th:text="${error}"></div>
+					<div class="alert alert-info" th:if="${info != null}"
+						th:text="${info}"></div>
+				</div>
+
+				<div th:if="${param.error}" class="alert alert-danger" role="alert">Usuario
+					o Contraseña inválidos.</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<footer th:replace="master/master :: footer"></footer>
+
+
+
+</body>
+</html>

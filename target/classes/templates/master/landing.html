@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Mil Oficios</title>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
+	rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap"
+	rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+	rel="stylesheet">
+
+
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<style>
+.navbar-toggler {
+	border-color: white;
+	border-width: 5px;
+}
+
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+</style>
+
+
+</head>
+<body>
+
+	<header th:fragment="menu">
+
+		<div style="background-image: url('imagenes/bricks.jpg');">
+			<a class="navbar-brand" th:href="@{/inicio}"
+				style="display: flex; justify-content: center;"> <img
+				th:src="@{/imagenes/logo_con_nombre.png}" alt="" width="150"
+				height="" th:href="@{/inicio}">
+			</a>
+			<p
+				style="display: flex; justify-content: center; font-family: 'Nanum Pen Script', cursive; font-size: 20px; padding-bottom: 20px; color: white;">
+				¡Deja de mirar paredes!</p>
+
+		</div>
+
+		<nav class="navbar navbar-expand-lg "
+			style="background-color: #0e3d83; margin-top: -20px;">
+			<div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+					aria-controls="navbarNavDropdown" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse text-center"
+					id="navbarNavDropdown">
+					<ul class="navbar-nav" style="color: white; font-size: 18px;">
+
+
+						<li class="nav-item"><a
+							style="color: white; padding-right: 20px;"
+							class="nav-link active" aria-current="page" th:href="@{/inicio}">Inicio</a></li>
+
+						<li class="nav-item"><a
+							style="color: white !important; padding-right: 20px;"
+							class="nav-link active" aria-current="page" href="#">Nosotros</a></li>
+
+						<li class="nav-item"><a
+							style="color: white !important; padding-right: 20px;"
+							class="nav-link active" aria-current="page" href="#">Contáctanos</a></li>
+
+						<li class="nav-item"><a
+							style="color: white !important; padding-right: 20px;"
+							class="nav-link active" aria-current="page" href="#">Precios</a></li>
+
+					</ul>
+					<form class="container-fluid justify-content-start">
+						<a class="btn btn-primary" th:href="@{/inicio/bienvenido}"
+							role="button"
+							style="font-size: 18px; background-color: #30a473; border-color: #30a473;">Comenzar</a>
+					</form>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+
+
+
+
+	<div class="container py4"></div>
+
+
+
+
+
+
+
+	<footer th:fragment="pie" class="container">
+
+		<p>MilOficios 2022</p>
+
+
+	</footer>
+
+
+
+</body>
+</html>

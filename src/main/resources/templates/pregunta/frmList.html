@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Lista de Preguntas</title>
+</head>
+<body>
+
+	<header th:fragment="header">
+
+
+		<main>
+
+			<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+				<a href="/"
+					class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+					<svg class="bi me-2" width="30" height="24">
+						<use xlink:href="#bootstrap" /></svg> <span class="fs-5 fw-semibold">MilOficios</span>
+				</a>
+				<ul class="list-unstyled ps-0">
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#home-collapse"
+							aria-expanded="true">Departamento</button>
+						<div class="collapse show" id="home-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded"
+									th:href="@{/departamento/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/departamento/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
+							aria-expanded="false">Provincia</button>
+						<div class="collapse" id="dashboard-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded"
+									th:href="@{/provincia/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/provincia/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+							aria-expanded="false">Distrito</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded"
+									th:href="@{/distrito/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/distrito/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+							aria-expanded="false">Empresa</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded"
+									th:href="@{/empresa/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/empresa/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+							aria-expanded="false">Convocatoria</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded"
+									th:href="@{/convocatoria/nuevo}">Registrar</a>></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/convocatoria/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+
+
+
+
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+							aria-expanded="false">Pregunta</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded"
+									th:href="@{/pregunta/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded"
+									th:href="@{/pregunta/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse"
+							aria-expanded="false">Usuario</button>
+						<div class="collapse" id="orders-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li><a class="link-dark rounded" th:href="@{/users/nuevo}">Registrar</a></li>
+								<li><a class="link-dark rounded" th:href="@{/users/listar}">Listar</a></li>
+							</ul>
+						</div>
+					</li>
+
+
+
+
+
+					<li class="border-top my-3"></li>
+					<li class="mb-1">
+						<button
+							class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#account-collapse"
+							aria-expanded="false">Mi Cuenta</button>
+						<div class="collapse" id="account-collapse">
+							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+								<li>
+									<form id="logoutForm" th:action="@{/logout}" method="post">
+										<input type="submit" class="btn btn-danger"
+											value="Cerrar Sesión"></input>
+									</form>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<div class="b-example-divider"></div>
+
+
+
+			<div
+				class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white"
+				style="width: 1215px;">
+
+				<!-- Poner Aqui el formulario -->
+				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario
+					de Listar</h2>
+
+				<div class="container">
+					<div>
+						<div class="table-responsive">
+
+							<table class="table table-white">
+
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Pregunta</th>
+
+										<th>Operación</th>
+										<th>Operación</th>
+
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr th:each="p:${listaPreguntas}">
+										<td th:text="${p.id}"></td>
+										<td th:text="${p.text}"></td>
+										<td><a th:href="@{/pregunta/eliminar?id=}+${p.id}">Eliminar</a></td>
+										<td><a th:href="@{'/pregunta/irmodificar/'+${p.id}}">Modificar</a></td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+
+
+		</main>
+
+		<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+		<script src="/js/sidebars.js"></script>
+
+
+	</header>
+
+
+
+	<footer th:replace="master/master :: footer"></footer>
+
+
+
+</body>
+</html>
