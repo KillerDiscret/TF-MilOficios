@@ -138,5 +138,12 @@ public class ConvocatoriaController {
         return "convocatoria/reporteConvExtensa";
     }
 	
+	@RequestMapping("/reporteAngello")
+    public String reporteAngello(Map<String, Object> model) {
+
+        model.put("lista", conService.reporteAngello());
+
+        return "convocatoria/reporteAngello";
+    }
 
 }

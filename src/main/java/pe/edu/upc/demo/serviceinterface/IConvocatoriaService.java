@@ -19,4 +19,5 @@ public interface IConvocatoriaService {
 	
 	List<String[]> reporteConvExtensa();
 
+	List<String[]> reporteAngello(); 
 }
