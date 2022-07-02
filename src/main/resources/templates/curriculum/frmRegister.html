@@ -3,7 +3,7 @@
 
 <head th:replace="master/master :: head">
 <meta charset="UTF-8">
-<title>Registrar Provincia</title>
+<title>Registrar Curriculum</title>
 </head>
 <body>
 
@@ -235,21 +235,19 @@
 				style="width: 1215px;">
 
 				<!-- Poner Aqui el formulario -->
-
 				<h2 style="padding-top: 40px; padding-left: 50px;">Formulario
 					de Registrar</h2>
 
 				<div class="container">
 					<div>
-						<form th:action="@{/provincia/guardar}" method="post"
-							th:object="${p}">
-
+						<form th:action="@{/curriculum/guardar}" method="post"
+							th:object="${c}">
 
 
 							<div class="row justify-content-center">
 								<div class="col-4">
-									<label class="form-label">Nombre de Provincia: </label> <input
-										type="text" class="form-control" th:field="*{name}"
+									<label class="form-label">Descripcion: </label> <input
+										type="text" class="form-control" th:field="*{description}"
 										minlength="3" maxlength="20" required="required"></input>
 								</div>
 							</div>
@@ -257,15 +255,15 @@
 
 							<div class="row justify-content-center">
 								<div class="col-4" style="margin-top: 10px;">
-									<label for="sede">Departamento:</label> <select
-										class="form-select" aria-label="Default select example"
-										th:field="*{departamento.id}">
-										<option th:each="ld: ${listaDepartamentos}"
-											th:value="${ld.id}" th:text="${ld.name}"
-											th:selected="(${ld.id} == *{departamento.id})"></option>
+									<label for="sede">Empleado:</label> <select class="form-select"
+										aria-label="Default select example" th:field="*{empleado.id}">
+										<option th:each="lp: ${listaEmpleados}" th:value="${lp.id}"
+											th:text="${lp.fullname}"
+											th:selected="(${lp.id} == *{empleado.id})"></option>
 									</select>
 								</div>
 							</div>
+
 
 							<div class="row justify-content-center">
 								<div class="col-4" style="margin-top: 10px;">
@@ -294,6 +292,7 @@
 
 
 	</header>
+
 
 
 
